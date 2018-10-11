@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="303aa5ca-14a5-42aa-a981-eaf40da81dc9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe$DobbeltLenketListeIterator.class" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe$DobbeltLenketListeIterator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe.class" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/Oppgave2.class" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/Oppgave2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java" afterPath="$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,14 +17,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3931624">
+    <splitter split-orientation="horizontal" split-proportion="0.44932845">
       <split-first>
         <leaf>
           <file leaf-file-name="Oppgave2.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+                <state relative-caret-position="300">
+                  <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -33,8 +37,8 @@
           <file leaf-file-name="DobbeltLenketListe.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/no/oslomet/oppgave2/DobbeltLenketListe.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
-                  <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+                <state relative-caret-position="260">
+                  <caret line="202" column="33" lean-forward="true" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#2000#2001#0" expanded="true" />
@@ -45,32 +49,32 @@
                     <element signature="e#3920#3921#0" expanded="true" />
                     <element signature="e#3962#3963#0" expanded="true" />
                     <element signature="e#3996#3997#0" expanded="true" />
-                    <marker date="1539248058000" expanded="false" signature="4473:4484" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="4544:4550" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="4595:4606" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="4666:4672" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="4721:4732" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="4792:4798" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="4858:4869" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="4929:4935" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="4984:4995" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="5055:5061" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="5107:5118" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="5178:5184" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="5227:5238" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="5298:5304" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="6557:6568" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="6628:6634" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="6679:6690" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="6750:6756" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="7239:7254" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="7314:7324" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="7376:7391" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="7446:7456" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="7499:7514" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="7574:7584" ph=" }" />
-                    <marker date="1539248058000" expanded="false" signature="7632:7647" ph=" { " />
-                    <marker date="1539248058000" expanded="false" signature="7707:7717" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="4473:4484" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="4544:4550" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="4595:4606" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="4666:4672" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="4721:4732" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="4792:4798" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="4858:4869" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="4929:4935" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="4984:4995" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="5055:5061" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="5107:5118" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="5178:5184" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="5227:5238" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="5298:5304" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="6651:6662" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="6722:6728" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="6773:6784" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="6844:6850" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="7333:7348" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="7408:7418" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="7470:7485" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="7540:7550" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="7593:7608" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="7668:7678" ph=" }" />
+                    <marker date="1539249613000" expanded="false" signature="7726:7741" ph=" { " />
+                    <marker date="1539249613000" expanded="false" signature="7801:7811" ph=" }" />
                   </folding>
                 </state>
               </provider>
@@ -136,6 +140,7 @@
         <option value="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week6.java" />
         <option value="$PROJECT_DIR$/src/no/oslomet/oppgave2/DobbeltLenketListe.java" />
         <option value="$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -555,7 +560,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.221174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.221174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5849057" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -772,10 +777,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/no/oslomet/oppgave2/DobbeltLenketListe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+        <state relative-caret-position="260">
+          <caret line="202" column="33" lean-forward="true" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2000#2001#0" expanded="true" />
@@ -786,41 +807,33 @@
             <element signature="e#3920#3921#0" expanded="true" />
             <element signature="e#3962#3963#0" expanded="true" />
             <element signature="e#3996#3997#0" expanded="true" />
-            <marker date="1539248058000" expanded="false" signature="4473:4484" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="4544:4550" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="4595:4606" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="4666:4672" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="4721:4732" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="4792:4798" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="4858:4869" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="4929:4935" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="4984:4995" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="5055:5061" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="5107:5118" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="5178:5184" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="5227:5238" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="5298:5304" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="6557:6568" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="6628:6634" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="6679:6690" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="6750:6756" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="7239:7254" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="7314:7324" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="7376:7391" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="7446:7456" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="7499:7514" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="7574:7584" ph=" }" />
-            <marker date="1539248058000" expanded="false" signature="7632:7647" ph=" { " />
-            <marker date="1539248058000" expanded="false" signature="7707:7717" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="4473:4484" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="4544:4550" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="4595:4606" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="4666:4672" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="4721:4732" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="4792:4798" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="4858:4869" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="4929:4935" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="4984:4995" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="5055:5061" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="5107:5118" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="5178:5184" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="5227:5238" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="5298:5304" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="6651:6662" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="6722:6728" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="6773:6784" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="6844:6850" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="7333:7348" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="7408:7418" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="7470:7485" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="7540:7550" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="7593:7608" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="7668:7678" ph=" }" />
+            <marker date="1539249613000" expanded="false" signature="7726:7741" ph=" { " />
+            <marker date="1539249613000" expanded="false" signature="7801:7811" ph=" }" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
