@@ -4,14 +4,14 @@ public class Oppgave2 {
 
     public static void main(String[] args) {
 
-        Character[] c = {'A', 'B', 'C'};
+        Character[] c = {'A', 'B', 'C', 'D', 'E'};
         DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
 
-        liste.leggInn(0, 'D');
-
         System.out.println(liste);
-
-//        System.out.println(liste.subliste(0,11));// skal kaste unntak
+        System.out.println(liste.fjern(1));
+        System.out.println(liste);
+        System.out.println(liste.fjern(1));
+        System.out.println(liste);
 
     }
 
