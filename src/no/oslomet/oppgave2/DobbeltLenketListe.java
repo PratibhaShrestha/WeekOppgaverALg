@@ -151,8 +151,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til);
         Liste<T> retListe = new DobbeltLenketListe<T>();
-        for (int i = fra; i <til ; i++) {
-            retListe.leggInn( hent(i));
+        for (int i = fra; i < til; i++) {
+            retListe.leggInn(hent(i));
         }
         return retListe;
     }
@@ -202,7 +202,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        return (indeksTil(verdi) != -1);
     }
 
     @Override
@@ -214,7 +214,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        if (antall < 0 || verdi == null) return -1;
+        Node current_node = hode;
+        int i;
+        for (i = 0; i < antall; i++) {
+            current_node = current_node.getNeste();
+            if (current_node.verdi == verdi) break;
+        }
+        // if verdi finnes ikke
+        if (i == antall) return -1;
+        return i;
     }
 
     @Override
