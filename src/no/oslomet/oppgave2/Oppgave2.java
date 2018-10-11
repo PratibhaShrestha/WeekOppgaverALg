@@ -4,9 +4,14 @@ public class Oppgave2 {
 
     public static void main(String[] args) {
 
+        Character[] c = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',};
+        DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
 
-        String[] s3 = {"A", "B", "C", "D", "E", "F", "G", "H"};
-        DobbeltLenketListe<String> l3 = new DobbeltLenketListe<>(s3);
+        System.out.println(liste.subliste(3, 8));// [D, E, F, G, H]
+        System.out.println(liste.subliste(5,5));// []
+        System.out.println(liste.subliste(8,liste.antall()));// [I, J]
+
+//        System.out.println(liste.subliste(0,11));// skal kaste unntak
 
     }
 

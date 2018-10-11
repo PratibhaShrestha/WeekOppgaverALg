@@ -74,6 +74,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return current_node;
     }
 
+    public static void fratilKontroll(int antall, int fra, int til) {
+        if (fra < 0)                                  // fra er negativ
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+        if (til > antall)                          // til er utenfor tabellen
+            throw new IndexOutOfBoundsException
+                    ("til(" + til + ") > antall(" + antall + ")");
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
     // konstruktør
     public DobbeltLenketListe() {
         hode = hale = null;
@@ -137,7 +149,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     // subliste
     public Liste<T> subliste(int fra, int til) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        fratilKontroll(antall, fra, til);
+        Liste<T> retListe = new DobbeltLenketListe<T>();
+        for (int i = fra; i <til ; i++) {
+            retListe.leggInn( hent(i));
+        }
+        return retListe;
     }
 
     @Override
