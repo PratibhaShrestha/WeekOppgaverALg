@@ -193,8 +193,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
         Node current_node = hode;
-        boolean harAndreVerdi = false;
+        if (current_node == null) return "[]";
 
+        boolean harAndreVerdi = false;
         String str = " [";
         while (current_node.getNeste() != null) {
             if ((current_node = current_node.getNeste()) == hale) break;
@@ -209,8 +210,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public String omvendtString() {
         Node current_node = hale;
-        boolean harAndreVerdi = false;
+        if (current_node == null) return "[]";
 
+        boolean harAndreVerdi = false;
         String str = " [";
         while (current_node.getForrige() != null) {
             if ((current_node = current_node.getForrige()) == hode) break;
