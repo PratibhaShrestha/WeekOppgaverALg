@@ -4,10 +4,12 @@ public class Oppgave2 {
 
     public static void main(String[] args) {
 
-        Character[] c = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',};
+        Character[] c = {'A', 'B', 'C'};
         DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
 
-        System.out.println(liste.inneholder(null));
+        liste.leggInn(2, 'D');
+
+        System.out.println(liste);
 
 //        System.out.println(liste.subliste(0,11));// skal kaste unntak
 

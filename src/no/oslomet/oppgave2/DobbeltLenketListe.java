@@ -178,23 +178,30 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (verdi == null)
             throw new IllegalArgumentException("Ulovlig å legge inn null verdier!");
         if (indeks < 0 || indeks > antall)
-            throw new IndexOutOfBoundsException("Index" + indeks + "er ulovlig!");
+            throw new IndexOutOfBoundsException("Index " + indeks + " er ulovlig!");
+
         if (hode == null)
             hode = new Node<T>(null, null, hale);
         if (hale == null)
             hale = new Node<T>(null, hode, null);
 
         Node newNode = null;
-        if (indeks == 0) {
+        if (antall == 0) {
             newNode = new Node(verdi, hode, hale);
             hode.setNeste(newNode);
-        } else {
+            hale.setForrige(newNode);
+        } else if (antall == indeks) {
             Node lastNode = hale.getForrige();
             newNode = new Node(verdi, lastNode, hale);
             lastNode.setNeste(newNode);
+            hale.setForrige(newNode);
+        } else {
+            Node nodeAtIndeks = finnNode(indeks-1);
+            Node nodeAfterIndeks = finnNode(indeks);
+            newNode = new Node(verdi, nodeAtIndeks, nodeAfterIndeks);
+            nodeAtIndeks.setNeste(newNode);
+            nodeAfterIndeks.setForrige(newNode);
         }
-        hale.setForrige(newNode);
-
         antall++;
         endringer++;
 
