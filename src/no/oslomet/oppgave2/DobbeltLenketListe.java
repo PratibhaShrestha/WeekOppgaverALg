@@ -147,11 +147,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-
         if (verdi == null)
             throw new IllegalArgumentException("Ulovlig å legge inn null verdier!");
         if (indeks < 0 || indeks > antall)
             throw new IndexOutOfBoundsException("Index" + indeks + "er ulovlig!");
+        if (hode == null)
+            hode = new Node<T>(null, null, hale);
+        if (hale == null)
+            hale = new Node<T>(null, hode, null);
+
+        Node newNode = new Node(verdi, hode, hale);
+        if (indeks == 0) {
+            hode.setNeste(newNode);
+        } else {
+            Node lastNode = hale.getForrige();
+            newNode = new Node(verdi, lastNode, hale);
+            lastNode.setNeste(newNode);
+        }
+        hale.setForrige(newNode);
+
+        antall++;
+        endringer++;
 
     }
 
@@ -193,7 +209,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
         Node current_node = hode;
-        if (current_node == null) return "[]";
+        if (current_node == null) return " [] ";
 
         boolean harAndreVerdi = false;
         String str = " [";
@@ -210,7 +226,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public String omvendtString() {
         Node current_node = hale;
-        if (current_node == null) return "[]";
+        if (current_node == null) return " [] ";
 
         boolean harAndreVerdi = false;
         String str = " [";
