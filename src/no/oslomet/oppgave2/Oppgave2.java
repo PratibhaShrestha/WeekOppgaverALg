@@ -7,7 +7,7 @@ public class Oppgave2 {
         Character[] c = {'A', 'B', 'C'};
         DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
 
-        liste.leggInn(2, 'D');
+        liste.leggInn(0, 'D');
 
         System.out.println(liste);
 

@@ -186,21 +186,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale = new Node<T>(null, hode, null);
 
         Node newNode = null;
-        if (antall == 0) {
+        if (antall == 0) {// hvis der er første eller liste er tom
             newNode = new Node(verdi, hode, hale);
             hode.setNeste(newNode);
             hale.setForrige(newNode);
-        } else if (antall == indeks) {
+        } else if (antall == indeks) { // hvis det er på siste
             Node lastNode = hale.getForrige();
             newNode = new Node(verdi, lastNode, hale);
             lastNode.setNeste(newNode);
             hale.setForrige(newNode);
-        } else {
-            Node nodeAtIndeks = finnNode(indeks-1);
-            Node nodeAfterIndeks = finnNode(indeks);
-            newNode = new Node(verdi, nodeAtIndeks, nodeAfterIndeks);
-            nodeAtIndeks.setNeste(newNode);
-            nodeAfterIndeks.setForrige(newNode);
+        } else { // hvis det er først eller siste
+            Node nodeAtIndeks = finnNode(indeks);
+            Node nodeBeforeIndeks = finnNode(indeks - 1);
+            newNode = new Node(verdi, nodeBeforeIndeks, nodeAtIndeks);
+            nodeBeforeIndeks.setNeste(newNode);
+            nodeAtIndeks.setForrige(newNode);
         }
         antall++;
         endringer++;
