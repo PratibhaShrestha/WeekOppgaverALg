@@ -6,13 +6,13 @@ public class Oppgave2 {
 
         DobbeltLenketListe<String> sliste = new DobbeltLenketListe<>();
         sliste.leggInn("A");
+        sliste.leggInn("B");
+        sliste.leggInn("C");
 
-        System.out.println(sliste.indeksTil(new String("A")));
 
-        if (sliste.indeksTil(new String("A")) != 0) {
-            System.out.println("Oppgave 4a: Stygg feil! Du MÅ bruke equals");
-            System.out.println("            og ikke == i sammenligningen i indeksTil()!");
-        }
+        System.out.println(sliste);
+
+        sliste.nullstill();
 
     }
 

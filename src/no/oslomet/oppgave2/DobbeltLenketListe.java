@@ -88,6 +88,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     // konstruktør
     public DobbeltLenketListe() {
+        tomVerdier();
+    }
+
+    private void tomVerdier(){
         hode = hale = null;
         antall = 0;
         endringer = 0;
@@ -295,7 +299,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        Node current_node = hode, next_node;
+        while (current_node.getNeste() != null) {
+            next_node = current_node.getNeste();
+            current_node.setNeste(null);
+            current_node = next_node;
+            if (next_node == hale) break;
+        }
+
+        while (current_node.getForrige() != null) {
+            next_node = current_node.getForrige();
+            current_node.setForrige(null);
+            if (next_node == hode) break;
+        }
+
+        tomVerdier();
     }
 
     @Override
