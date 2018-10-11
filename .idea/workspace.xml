@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="303aa5ca-14a5-42aa-a981-eaf40da81dc9" name="Default" comment="" />
+    <list default="true" id="303aa5ca-14a5-42aa-a981-eaf40da81dc9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Oppgave1_1_10.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Oppgave1_2_1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Oppgave1_2_2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Oppgave1_3_6.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week4.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$FornavnSammenlikner.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$Person.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$Sammenlikner$Funksjon.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$Sammenlikner.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$Student.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5$Studium.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week5.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week6$1Node.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week6$LinkedList$Node.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week6$LinkedList.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week6$MyArrayList.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/cs/algdat/Week6.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/Beholder.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe$DobbeltLenketListeIterator.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe$Node.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/DobbeltLenketListe.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/Liste.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeekOppgaverALg/no/oslomet/oppgave2/Oppgave2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeekOppgaverALg.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Oppgave1_1_10.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Oppgave1_2_1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Oppgave1_2_2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Oppgave1_3_6.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week3.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week4.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week5.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Week6.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/oppgave2/Beholder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/oppgave2/DobbeltLenketListe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/oppgave2/Liste.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/no/oslomet/oppgave2/Oppgave2.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,6 +158,9 @@
       <find>vis</find>
       <find>Printing</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -246,6 +297,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -549,7 +601,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.221174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
