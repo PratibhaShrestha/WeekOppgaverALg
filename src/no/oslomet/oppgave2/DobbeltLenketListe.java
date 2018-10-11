@@ -245,13 +245,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        int indeks = indeksTil(verdi);
+        if (indeks == -1)
+            return false;
+        else {
+            fjern(indeks);
+            return true;
+        }
     }
 
     @Override
     public T fjern(int indeks) {
 
-        indeksKontroll(indeks,false);
+        indeksKontroll(indeks, false);
 
         Node thisNode = finnNode(indeks);
         if (indeks == 0) {

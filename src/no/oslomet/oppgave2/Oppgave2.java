@@ -10,7 +10,7 @@ public class Oppgave2 {
         System.out.println(liste);
         System.out.println(liste.fjern(1));
         System.out.println(liste);
-        System.out.println(liste.fjern(1));
+        System.out.println(liste.fjern((Character) 'Z'));
         System.out.println(liste);
 
     }
