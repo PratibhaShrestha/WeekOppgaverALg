@@ -176,7 +176,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) {
         if (verdi == null)
-            throw new IllegalArgumentException("Ulovlig å legge inn null verdier!");
+            throw new NullPointerException("Ulovlig å legge inn null verdier!");
         if (indeks < 0 || indeks > antall)
             throw new IndexOutOfBoundsException("Index " + indeks + " er ulovlig!");
 
@@ -223,18 +223,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public int indeksTil(T verdi) {
         if (antall < 0 || verdi == null) return -1;
         Node current_node = hode;
-        int i;
-        for (i = 0; i < antall; i++) {
+        int index = -1;
+        for (int i = 0; i < antall; i++) {
             current_node = current_node.getNeste();
-            if (current_node.verdi == verdi) break;
+            if (current_node.verdi.equals(verdi)) {
+                index = i;
+                break;
+            }
         }
-        // if verdi finnes ikke
-        if (i == antall) return -1;
-        return i;
+        return index;
     }
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
+        if (nyverdi == null)
+            throw new NullPointerException("ikke tilatt med nullverdi!");
         indeksKontroll(indeks, false);
         Node thisNode = finnNode(indeks);
         T gammelVerdi = (T) thisNode.verdi;
@@ -245,6 +248,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
+
         int indeks = indeksTil(verdi);
         if (indeks == -1)
             return false;
@@ -278,7 +282,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         antall--;
-        endringer--;
+        endringer++;
         if (antall == 0) {
             hode.setNeste(hale);
             hale.setForrige(hode);
@@ -297,36 +301,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
         Node current_node = hode;
-        if (current_node == null) return " [] ";
-
+        if (current_node == null) return "[]";
         boolean harAndreVerdi = false;
-        String str = " [";
+        StringBuilder str = new StringBuilder("[");
         while (current_node.getNeste() != null) {
             if ((current_node = current_node.getNeste()) == hale) break;
-            str += current_node.getVerdi() + ", ";
+            str.append(current_node.getVerdi()).append(", ");
             harAndreVerdi = true;
         }
         // fjerner den siste Comma med mellomrom
         if (harAndreVerdi)
-            str = str.substring(0, str.length() - 2);
-        return str + "] ";
+            str = new StringBuilder(str.substring(0, str.length() - 2));
+        return str + "]";
     }
 
     public String omvendtString() {
         Node current_node = hale;
-        if (current_node == null) return " [] ";
+        if (current_node == null) return "[]";
 
         boolean harAndreVerdi = false;
-        String str = " [";
+        StringBuilder str = new StringBuilder("[");
         while (current_node.getForrige() != null) {
             if ((current_node = current_node.getForrige()) == hode) break;
-            str += current_node.getVerdi() + ", ";
+            str.append(current_node.getVerdi()).append(", ");
             harAndreVerdi = true;
         }
         // fjerner den siste Comma med mellomrom
         if (harAndreVerdi)
-            str = str.substring(0, str.length() - 2);
-        return str + "] ";
+            str = new StringBuilder(str.substring(0, str.length() - 2));
+        return str + "]";
     }
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {

@@ -4,14 +4,15 @@ public class Oppgave2 {
 
     public static void main(String[] args) {
 
-        Character[] c = {'A', 'B', 'C', 'D', 'E'};
-        DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
+        DobbeltLenketListe<String> sliste = new DobbeltLenketListe<>();
+        sliste.leggInn("A");
 
-        System.out.println(liste);
-        System.out.println(liste.fjern(1));
-        System.out.println(liste);
-        System.out.println(liste.fjern((Character) 'Z'));
-        System.out.println(liste);
+        System.out.println(sliste.indeksTil(new String("A")));
+
+        if (sliste.indeksTil(new String("A")) != 0) {
+            System.out.println("Oppgave 4a: Stygg feil! Du MÅ bruke equals");
+            System.out.println("            og ikke == i sammenligningen i indeksTil()!");
+        }
 
     }
 
