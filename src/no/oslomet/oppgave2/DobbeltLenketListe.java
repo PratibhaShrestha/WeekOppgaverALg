@@ -4,6 +4,7 @@ package no.oslomet.oppgave2;
 
 import no.oslomet.oppgave2.hjelpeklasser.Liste;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -343,7 +344,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+
+        if (c == null)
+            return;
+
+        List<T> arrList = new ArrayList<>();
+        
+        for (int i = 0; i < liste.antall(); i++) {
+            arrList.add(liste.hent(i));
+        }
+        Collections.sort(arrList, c);
+
+        for (int i = 0; i < arrList.size(); i++) {
+            liste.fjern(i);
+            liste.leggInn(i, arrList.get(i));
+        }
+
     }
 
     @Override
