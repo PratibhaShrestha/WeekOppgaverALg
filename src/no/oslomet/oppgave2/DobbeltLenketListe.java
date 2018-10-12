@@ -370,7 +370,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;
 
             indeksKontroll(indeks, false);
-
             for (int i = 0; i < indeks; i++) {
                 denne = denne.getNeste();
             }
@@ -396,7 +395,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Ikke laget ennå!");
+            if (iteratorendringer != endringer)
+                throw new ConcurrentModificationException("ulik endringer verdier");
+            if (!fjernOK) throw new IllegalStateException();
+            fjernOK = false;
+
+            if (antall == 1)
+                hode = hale = null;
+            else if (denne == null) {
+                hale = hale.getForrige();
+                hale.setNeste(null);
+            } else if (denne.forrige == hode) {
+                hode = hode.getNeste();
+                hode.setForrige(null);
+            } else {
+                //removing the denne.forrige
+                Node previousNode = denne.getForrige();
+                Node beforePreviousNode = previousNode.getForrige();
+                beforePreviousNode.setNeste(denne);
+                denne.setForrige(beforePreviousNode);
+                previousNode.nullstill();
+            }
+
+            antall--;
+            endringer++;
+            iteratorendringer++;
         }
 
     } // DobbeltLenketListeIterator
