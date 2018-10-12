@@ -345,7 +345,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
 
         if (c == null)
-            return;
+            throw new NullPointerException("ikke tilatt nullverdi for comparator!");
 
         List<T> arrList = new ArrayList<>();
 
