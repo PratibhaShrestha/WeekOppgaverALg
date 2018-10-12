@@ -1,4 +1,4 @@
-package no.oslomet.oppgave2;
+package no.oslomet.oppgave2.hjelpeklasser;
 
 import java.util.Iterator;
 

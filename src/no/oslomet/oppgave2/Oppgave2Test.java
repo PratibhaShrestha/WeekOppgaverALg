@@ -1,5 +1,7 @@
 package no.oslomet.oppgave2;
 
+import no.oslomet.oppgave2.hjelpeklasser.Liste;
+
 import java.util.*;
 
 public class Oppgave2Test {

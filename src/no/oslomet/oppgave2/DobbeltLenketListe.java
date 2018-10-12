@@ -2,6 +2,8 @@ package no.oslomet.oppgave2;
 
 /////////// DobbeltLenketListe ////////////////////////////////////
 
+import no.oslomet.oppgave2.hjelpeklasser.Liste;
+
 import java.util.*;
 
 public class DobbeltLenketListe<T> implements Liste<T> {
