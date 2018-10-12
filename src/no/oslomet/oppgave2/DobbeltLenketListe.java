@@ -367,11 +367,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         private DobbeltLenketListeIterator(int indeks) {
             denne = hode;
             fjernOK = false;
-            iteratorendringer = 0;
+            iteratorendringer = endringer;
+
+            indeksKontroll(indeks, false);
 
             for (int i = 0; i < indeks; i++) {
                 denne = denne.getNeste();
-                iteratorendringer++;
             }
         }
 
@@ -386,20 +387,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new ConcurrentModificationException("ulik endringer verdier");
             if (!hasNext()) throw new NoSuchElementException();
 
-            if (denne == hode) {
-                denne = denne.getNeste();
-                return denne.verdi;
-            }
-
-            if (denne.getNeste() != null) {
-                denne = denne.getNeste();
-                fjernOK = true;
-                T res = denne.getVerdi();
-                return res;
-            }
-
-
-            return null;
+            T tmp = denne.verdi;
+            denne = denne.getNeste();
+            fjernOK = true;
+            return tmp;
 
         }
 
