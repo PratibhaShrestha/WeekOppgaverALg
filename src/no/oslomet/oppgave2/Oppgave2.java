@@ -7,18 +7,20 @@ public class Oppgave2 {
     public static void main(String[] args) {
 
 
-        for (int i = 0; i <= 4; i++) {
-            String[] arr = {"A","B","C","D"};
-            DobbeltLenketListe<String> liste = new DobbeltLenketListe<String>(arr);
-
-            liste.leggInn(i,"Z");
-
-            System.out.println("Printing Nodes: ");
-            System.out.println(liste.toString());
-        }
+        String[] arr = {"A","B"};
+        DobbeltLenketListe<String> liste = new DobbeltLenketListe<String>(arr);
 
 
+        System.out.println("Printing Nodes: ");
+        System.out.println(liste.toString());
+
+        System.out.println(liste.fjern(1));
+        System.out.println(liste);
+
+        System.out.println(liste.fjern(0));
+        System.out.println(liste);
 
     }
+
 
 }

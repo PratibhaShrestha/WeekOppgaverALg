@@ -48,6 +48,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return retVal + " )";
         }
 
+        void nullstill() {
+            forrige = null;
+            neste = null;
+            verdi = null;
+        }
     } // Node
 
     // instansvariabler
@@ -251,17 +256,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) {
 
         indeksKontroll(indeks, false);
-
         Node thisNode = finnNode(indeks);
+        T retVerdi;
         if (indeks == 0) {
             // fiks hode
-            Node nextNode = finnNode(indeks + 1);
-            hode.setNeste(nextNode);
-            nextNode.setForrige(hode);
+            if (hode.getNeste() != null) {
+                Node nextNode = hode.getNeste();
+                hode = nextNode;
+                hode.setForrige(null);
+            }
         } else if (indeks == antall - 1) {
-            Node previousNode = finnNode(indeks - 1);
-            previousNode.setNeste(hale);
-            hale.setForrige(previousNode);
+            Node previousNode = hale.getForrige();
+            hale = previousNode;
+            hale.setNeste(null);
             //fiks hale
         } else {
             Node nodeAfterIndeks = finnNode(indeks + 1);
@@ -272,11 +279,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         antall--;
         endringer++;
-        if (antall == 0) {
-            hode.setNeste(hale);
-            hale.setForrige(hode);
-        }
-        return (T) thisNode.verdi;
+
+        if (antall == 0) hode = hale = null;
+
+        retVerdi = (T) thisNode.verdi;
+        thisNode.nullstill();
+        return retVerdi;
 
     }
 
@@ -287,13 +295,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             next_node = current_node.getNeste();
             current_node.setNeste(null);
             current_node = next_node;
-            if (next_node == hale) break;
         }
 
         while (current_node.getForrige() != null) {
             next_node = current_node.getForrige();
             current_node.setForrige(null);
-            if (next_node == hode) break;
         }
         endringer++;
         tomVerdier();
