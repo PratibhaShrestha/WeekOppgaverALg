@@ -6,8 +6,10 @@ public class Oblig3 {
 
 
     public static void main(String[] args) {
-        ObligSBinTre<String> tre = new ObligSBinTre<>(Comparator.naturalOrder());
-        System.out.println(tre.antall()); // Utskrift: 0
+
+        Integer[] a = {4,7,2,9,5,10,8,1,3,6};
+        ObligSBinTre<Integer> tre = new ObligSBinTre<>(Comparator.naturalOrder()); for (int verdi : a) tre.leggInn(verdi);
+        System.out.println(tre.antall()); // Utskrift: 10
 
     }
 
