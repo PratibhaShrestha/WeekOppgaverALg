@@ -101,8 +101,70 @@ public class ObligSBinTre<T> implements Beholder<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        int occurance = 0;
+        Node<T> p = rot;
+        while (p != null) {
+            int cmp = comp.compare(verdi, p.verdi);
+            if (cmp == 0) occurance++;
+            p = cmp < 0 ? p.venstre : p.høyre;
+
+        }
+        return occurance;
     }
+
+
+    //    DELETE FROM HERE !!!
+
+    /**
+     * Print a representation of this BST on System.out.
+     */
+    public void print() {
+        printHelper(rot, "");
+    }
+
+    /**
+     * Print the BST rooted at root, with indent preceding all output lines.
+     * The nodes are printed in in-order.
+     *
+     * @param root   The root of the tree to be printed.
+     * @param indent The string to go before output lines.
+     */
+    private static void printHelper(Node root, String indent) {
+        if (root == null) {
+            System.out.println(indent + "null");
+            return;
+        }
+
+        // Pick a pretty indent.
+        String newIndent;
+        if (indent.equals("")) {
+            newIndent = ".. ";
+        } else {
+            newIndent = "..." + indent;
+        }
+
+        printHelper(root.venstre, newIndent);
+        System.out.println(indent + root.verdi);
+        printHelper(root.høyre, newIndent);
+    }
+
+    void display() {
+
+        Node root = rot;
+        if (root != null) {
+            display(root.venstre);
+            display(root.høyre);
+        }
+    }
+
+    private void display(Node root) {
+        if (root != null) {
+            display(root.venstre);
+            System.out.print(" " + root.verdi);
+            display(root.høyre);
+        }
+    }
+    //    DELETE UPTO HERE !!!
 
     @Override
     public boolean tom() {
