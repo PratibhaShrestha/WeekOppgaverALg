@@ -31,9 +31,12 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         @Override
         public String toString() {
+
             return " " + verdi;
 
-            /*T value = null, left = null, right = null, parent = null;
+            /*
+            // FOR DEMO PURPOSES
+            T value = null, left = null, right = null, parent = null;
 
             if (venstre != null) left = venstre.verdi;
             if (forelder != null) parent = forelder.verdi;
@@ -42,12 +45,13 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
             StringBuilder str = new StringBuilder();
 
-            str.append(String.format("NODE [ <- : %-5d", left));
-            str.append(String.format(" ^ : %-5d", parent));
-            str.append(String.format(" ->: %-5d ]", right));
-            str.append(String.format(" Value : %-5d", value));
+            str.append(String.format("[ ^ : %-5d", parent));
+            str.append(String.format(" %5d", left));
+            str.append(String.format(" <-- %3d -->", value));
+            str.append(String.format(" %-5d ]", right));
 
-            return str.toString();*/
+            return str.toString();
+            */
         }
     } // class Node
 
@@ -130,53 +134,15 @@ public class ObligSBinTre<T> implements Beholder<T> {
         return occurance;
     }
 
-
-    //    DELETE FROM HERE !!!
-    void display() {
-        Node root = rot;
-        System.out.println(root);
-        if (root != null) {
-            displayNode(root.venstre);
-            displayNode(root.høyre);
-        }
-    }
-
-    private void displayNode(Node root) {
-        if (root != null) {
-            displayNode(root.venstre);
-            System.out.println(root);
-            displayNode(root.høyre);
-        }
-    }
-    //    DELETE UPTO HERE !!!
-
     @Override
     public boolean tom() {
         return antall == 0;
     }
 
+
     @Override
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
-
-    public Node getSuccessor(Node deleleNode) {
-        Node successsor = null;
-        Node successsorParent = null;
-        Node current = deleleNode.høyre;
-        while (current != null) {
-            successsorParent = successsor;
-            successsor = current;
-            current = current.venstre;
-        }
-        //check if successor has the right child, it cannot have left child for sure
-        // if it does have the right child, add it to the left of successorParent.
-//		successsorParent
-        if (successsor != deleleNode.høyre) {
-            successsorParent.venstre = successsor.høyre;
-            successsor.høyre = deleleNode.høyre;
-        }
-        return successsor;
     }
 
     private static <T> Node<T> nesteInorden(Node<T> p) {
