@@ -28,13 +28,12 @@ public class Oblig3Test {
         // DONE ...
         antallFeil += oppgave1();
         antallFeil += oppgave2();
-
+        antallFeil += oppgave3();
         */
 
 
         /*
         // NOT DONE -.-
-        antallFeil += oppgave3();
         antallFeil += oppgave4();
         antallFeil += oppgave5();
         antallFeil += oppgave6();

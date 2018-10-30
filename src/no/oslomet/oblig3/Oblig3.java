@@ -8,15 +8,9 @@ public class Oblig3 {
 
     public static void main(String[] args) {
 
-        Integer[] a = {4, 7, 2, 9, 4, 10, 8, 7, 4, 6};
         ObligSBinTre<Integer> tre = new ObligSBinTre<>(Comparator.naturalOrder());
-        for (int verdi : a) tre.leggInn(verdi);
 
-        System.out.println(tre.antall());
-        System.out.println(tre.antall(5));
-        System.out.println(tre.antall(4));
-        System.out.println(tre.antall(7));
-        System.out.println(tre.antall(10));
+        System.out.println(tre.toString()); // [1, 2, 4, 4, 4, 6, 7, 7, 8, 9, 10]
 
     }
 

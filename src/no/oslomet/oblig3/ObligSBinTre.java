@@ -3,6 +3,7 @@ package no.oslomet.oblig3;
 
 ////////////////// ObligSBinTre /////////////////////////////////
 
+import com.sun.tools.javac.util.GraphUtils;
 import no.oslomet.oblig3.hjelpeklasser.Beholder;
 
 import java.util.*;
@@ -30,7 +31,23 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         @Override
         public String toString() {
-            return "" + verdi;
+            return " " + verdi;
+
+            /*T value = null, left = null, right = null, parent = null;
+
+            if (venstre != null) left = venstre.verdi;
+            if (forelder != null) parent = forelder.verdi;
+            if (verdi != null) value = verdi;
+            if (høyre != null) right = høyre.verdi;
+
+            StringBuilder str = new StringBuilder();
+
+            str.append(String.format("NODE [ <- : %-5d", left));
+            str.append(String.format(" ^ : %-5d", parent));
+            str.append(String.format(" ->: %-5d ]", right));
+            str.append(String.format(" Value : %-5d", value));
+
+            return str.toString();*/
         }
     } // class Node
 
@@ -56,7 +73,7 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         while (p != null)       // fortsetter til p er ute av treet
         {
-            q = p;                                 // q er forelder til p
+            q = p;
             cmp = comp.compare(verdi, p.verdi);     // bruker komparatoren
             p = cmp < 0 ? p.venstre : p.høyre;     // flytter p
         }
@@ -67,7 +84,8 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         if (q == null) rot = p;                  // p blir rotnode
         else if (cmp < 0) q.venstre = p;         // venstre barn til q
-        else q.høyre = p;                        // høyre barn til q
+        else q.høyre = p;                      // høyre barn til q
+        p.forelder = q;
 
         antall++;                                // en verdi mer i treet
         return true;                             // vellykket innlegging
@@ -114,54 +132,20 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
 
     //    DELETE FROM HERE !!!
-
-    /**
-     * Print a representation of this BST on System.out.
-     */
-    public void print() {
-        printHelper(rot, "");
-    }
-
-    /**
-     * Print the BST rooted at root, with indent preceding all output lines.
-     * The nodes are printed in in-order.
-     *
-     * @param root   The root of the tree to be printed.
-     * @param indent The string to go before output lines.
-     */
-    private static void printHelper(Node root, String indent) {
-        if (root == null) {
-            System.out.println(indent + "null");
-            return;
-        }
-
-        // Pick a pretty indent.
-        String newIndent;
-        if (indent.equals("")) {
-            newIndent = ".. ";
-        } else {
-            newIndent = "..." + indent;
-        }
-
-        printHelper(root.venstre, newIndent);
-        System.out.println(indent + root.verdi);
-        printHelper(root.høyre, newIndent);
-    }
-
     void display() {
-
         Node root = rot;
+        System.out.println(root);
         if (root != null) {
-            display(root.venstre);
-            display(root.høyre);
+            displayNode(root.venstre);
+            displayNode(root.høyre);
         }
     }
 
-    private void display(Node root) {
+    private void displayNode(Node root) {
         if (root != null) {
-            display(root.venstre);
-            System.out.print(" " + root.verdi);
-            display(root.høyre);
+            displayNode(root.venstre);
+            System.out.println(root);
+            displayNode(root.høyre);
         }
     }
     //    DELETE UPTO HERE !!!
@@ -176,13 +160,67 @@ public class ObligSBinTre<T> implements Beholder<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    public Node getSuccessor(Node deleleNode) {
+        Node successsor = null;
+        Node successsorParent = null;
+        Node current = deleleNode.høyre;
+        while (current != null) {
+            successsorParent = successsor;
+            successsor = current;
+            current = current.venstre;
+        }
+        //check if successor has the right child, it cannot have left child for sure
+        // if it does have the right child, add it to the left of successorParent.
+//		successsorParent
+        if (successsor != deleleNode.høyre) {
+            successsorParent.venstre = successsor.høyre;
+            successsor.høyre = deleleNode.høyre;
+        }
+        return successsor;
+    }
+
     private static <T> Node<T> nesteInorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (p == null)
+            return null;
+
+        // step 1 of the above algorithm
+        if (p.høyre != null) {
+            return førstInorden(p.høyre);
+        }
+
+        // step 2 of the above algorithm
+        Node parent = p.forelder;
+        while (parent != null && p == parent.høyre) {
+            p = parent;
+            parent = parent.forelder;
+        }
+        return parent;
+    }
+
+    static Node førstInorden(Node node) {
+        Node current = node;
+        if (current != null)
+            while (current.venstre != null) current = current.venstre;
+        return current;
     }
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        boolean isEmpty = true;
+        StringBuilder strOutput = new StringBuilder();
+        strOutput.append("[");
+        Node<T> p = førstInorden(rot);
+        while (p != null) {
+            strOutput.append(p.verdi).append(", ");
+            isEmpty = false;
+            p = nesteInorden(p);
+        }
+        if (!isEmpty)
+            strOutput.delete(strOutput.length() - 2, strOutput.length());
+
+        strOutput.append("]");
+
+        return strOutput.toString();
     }
 
     public String omvendtString() {
