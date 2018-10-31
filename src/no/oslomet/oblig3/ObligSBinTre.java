@@ -3,6 +3,7 @@ package no.oslomet.oblig3;
 
 ////////////////// ObligSBinTre /////////////////////////////////
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.sun.tools.javac.util.GraphUtils;
 import no.oslomet.oblig3.hjelpeklasser.Beholder;
 
@@ -32,9 +33,9 @@ public class ObligSBinTre<T> implements Beholder<T> {
         @Override
         public String toString() {
 
-            return " " + verdi;
+            //return " " + verdi;
 
-            /*
+
             // FOR DEMO PURPOSES
             T value = null, left = null, right = null, parent = null;
 
@@ -45,13 +46,12 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
             StringBuilder str = new StringBuilder();
 
-            str.append(String.format("[ ^ : %-5d", parent));
-            str.append(String.format(" %5d", left));
-            str.append(String.format(" <-- %3d -->", value));
+            str.append(String.format(" Node@%s [ %5d", Integer.toHexString(hashCode()), left));
+            str.append(String.format(" <--  ^ %-4d %3d -->", parent, value));
             str.append(String.format(" %-5d ]", right));
 
             return str.toString();
-            */
+
         }
     } // class Node
 
@@ -89,7 +89,6 @@ public class ObligSBinTre<T> implements Beholder<T> {
         if (q == null) rot = p;                  // p blir rotnode
         else if (cmp < 0) q.venstre = p;         // venstre barn til q
         else q.høyre = p;                      // høyre barn til q
-        p.forelder = q;
 
         antall++;                                // en verdi mer i treet
         return true;                             // vellykket innlegging
@@ -109,12 +108,76 @@ public class ObligSBinTre<T> implements Beholder<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+    public boolean fjern(T verdi)  // hører til klassen SBinTre
+    {
+        if (verdi == null) return false;  // treet har ingen nullverdier
+
+        Node<T> p = rot, q = null;   // q skal være forelder til p
+
+        while (p != null)            // leter etter verdi
+        {
+            int cmp = comp.compare(verdi, p.verdi);      // sammenligner
+            if (cmp < 0) {
+                q = p;
+                p = p.venstre;
+            }      // går til venstre
+            else if (cmp > 0) {
+                q = p;
+                p = p.høyre;
+            }   // går til høyre
+            else break;    // den søkte verdien ligger i p
+        }
+        if (p == null) return false;   // finner ikke verdi
+
+        if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
+        {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+            if (p == rot) rot = b;
+            else if (p == q.venstre) q.venstre = b;
+            else q.høyre = b;
+            if (b != null) {
+                b.forelder = q;
+            }
+
+        } else  // Tilfelle 3)
+        {
+            Node<T> s = p, r = p.høyre;   // finner neste i inorden
+            while (r.venstre != null) {
+                s = r;    // s er forelder til r
+                r = r.venstre;
+            }
+
+            p.verdi = r.verdi;   // kopierer verdien i r til p
+
+            if (s != p) s.venstre = r.høyre;
+            else s.høyre = r.høyre;
+            r.forelder = p.forelder;
+        }
+
+        antall--;   // det er nå én node mindre i treet
+        return true;
     }
 
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        int occurance = 0;
+
+        Boolean hasDeleted;
+
+        do {
+            hasDeleted = false;
+            Node<T> p = rot;
+            while (p != null) {
+                int cmp = comp.compare(verdi, p.verdi);
+                if (cmp == 0) {
+                    occurance++;
+                    hasDeleted = fjern(verdi);
+                }
+                p = cmp < 0 ? p.venstre : p.høyre;
+            }
+        } while (hasDeleted);
+
+
+        return occurance;
     }
 
     @Override
@@ -142,17 +205,39 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Node<T> curr = rot;
+        if (curr != null) {
+            nullstillNode(curr);
+        }
+
+        antall = 0;
+        rot = null;
+    }
+
+    void nullstillNode(Node node) {
+        if (node != null) {
+            nullstillNode(node.venstre);
+            node.verdi = null;
+            node.verdi = null;
+            nullstillNode(node.høyre);
+            node.høyre = null;
+            node.forelder = null;
+        }
     }
 
     private static <T> Node<T> nesteInorden(Node<T> p) {
         if (p == null)
             return null;
+        Node current = p;
 
-        if (p.høyre != null) {
-            return førstInorden(p.høyre);
+        // case 1: if the tree has right child / right subtree
+        if (current.høyre != null) {
+            current = current.høyre;
+            while (current.venstre != null) current = current.venstre;
+            return current;
         }
 
+        //case 2: if there is no right subtree! The node to the last left turn!
         Node parent = p.forelder;
         while (parent != null && p == parent.høyre) {
             p = parent;
@@ -161,19 +246,45 @@ public class ObligSBinTre<T> implements Beholder<T> {
         return parent;
     }
 
-    static Node førstInorden(Node node) {
+    static Node lavesteVerdiInorden(Node node) {
         Node current = node;
-        if (current != null)
+        if (current != null) {
             while (current.venstre != null) current = current.venstre;
+        }
         return current;
     }
 
-    static Node sistInorden(Node node) {
-        Node current = node;
-        if (current != null)
-            while (current.høyre != null) current = current.høyre;
-        return current;
+    // DELETE FROM HERE !!!
+
+    public void print() {
+        Node<T> curr = rot;
+        if (curr != null) {
+            printNode(curr);
+        }
     }
+
+    void printNode(Node node) {
+        if (node != null) {
+            printNode(node.venstre);
+            System.out.println(node);
+            printNode(node.høyre);
+        }
+    }
+
+    void printTest() {
+        Node<T> curr = rot;
+
+        System.out.println(curr);
+
+        curr = lavesteVerdiInorden(rot);
+
+        System.out.println(curr);
+
+        curr = nesteInorden(curr);
+
+        System.out.println(curr);
+    }
+    // DELETE UPTO HERE !!!
 
 
     @Override
@@ -181,11 +292,10 @@ public class ObligSBinTre<T> implements Beholder<T> {
         boolean isEmpty = true;
         StringBuilder strOutput = new StringBuilder();
         strOutput.append("[");
-        Node<T> p = førstInorden(rot);
-        while (p != null) {
+        Node<T> p = lavesteVerdiInorden(rot);
+        for (; p != null; p = nesteInorden(p)) {
             strOutput.append(p.verdi).append(", ");
             isEmpty = false;
-            p = nesteInorden(p);
         }
         if (!isEmpty)
             strOutput.delete(strOutput.length() - 2, strOutput.length());
