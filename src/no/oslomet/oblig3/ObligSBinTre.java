@@ -149,12 +149,10 @@ public class ObligSBinTre<T> implements Beholder<T> {
         if (p == null)
             return null;
 
-        // step 1 of the above algorithm
         if (p.høyre != null) {
             return førstInorden(p.høyre);
         }
 
-        // step 2 of the above algorithm
         Node parent = p.forelder;
         while (parent != null && p == parent.høyre) {
             p = parent;
@@ -169,6 +167,14 @@ public class ObligSBinTre<T> implements Beholder<T> {
             while (current.venstre != null) current = current.venstre;
         return current;
     }
+
+    static Node sistInorden(Node node) {
+        Node current = node;
+        if (current != null)
+            while (current.høyre != null) current = current.høyre;
+        return current;
+    }
+
 
     @Override
     public String toString() {
@@ -187,10 +193,73 @@ public class ObligSBinTre<T> implements Beholder<T> {
         strOutput.append("]");
 
         return strOutput.toString();
+
+        /*
+        // Inorder Traversal Using ArrayDeque
+        boolean isEmpty = true;
+        StringBuilder strOutput = new StringBuilder();
+        strOutput.append("[");
+
+        List<T> result = new ArrayList<>();
+        Deque<Node> stack = new ArrayDeque<>();
+        Node p = rot;
+
+        while (!stack.isEmpty() || p != null) {
+            if (p != null) {
+                stack.push(p);
+                p = p.venstre;
+            } else {
+                Node node = stack.pop();
+                result.add((T) node.verdi);  // Add after all left children
+                p = node.høyre;
+            }
+        }
+
+        for (T value : result) {
+            strOutput.append(value).append(", ");
+            isEmpty = false;
+        }
+
+        if (!isEmpty)
+            strOutput.delete(strOutput.length() - 2, strOutput.length());
+
+        strOutput.append("]");
+
+        return strOutput.toString();
+         */
     }
 
     public String omvendtString() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        boolean isEmpty = true;
+        StringBuilder strOutput = new StringBuilder();
+        strOutput.append("[");
+
+        List<T> result = new ArrayList<>();
+        Deque<Node> stack = new ArrayDeque<>();
+        Node p = rot;
+
+        while (!stack.isEmpty() || p != null) {
+            if (p != null) {
+                stack.push(p);
+                p = p.høyre;
+            } else {
+                Node node = stack.pop();
+                result.add((T) node.verdi);  // Add after all left children
+                p = node.venstre;
+            }
+        }
+
+        for (T value : result) {
+            strOutput.append(value).append(", ");
+            isEmpty = false;
+        }
+
+        if (!isEmpty)
+            strOutput.delete(strOutput.length() - 2, strOutput.length());
+
+        strOutput.append("]");
+
+        return strOutput.toString();
     }
 
     public String høyreGren() {
