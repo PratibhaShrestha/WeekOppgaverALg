@@ -46,8 +46,9 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
             StringBuilder str = new StringBuilder();
 
-            str.append(String.format(" Node@%s [ %5d", Integer.toHexString(hashCode()), left));
-            str.append(String.format(" <--  ^ %-4d %3d -->", parent, value));
+            str.append(String.format(" Node@%-8s [ %5d", Integer.toHexString(hashCode()), left));
+            str.append(String.format(" <--  Node@%-8s ^ %-4d %3d -->",
+                    (forelder != null) ? Integer.toHexString(forelder.hashCode()) : "", parent, value));
             str.append(String.format(" %-5d ]", right));
 
             return str.toString();
@@ -256,7 +257,7 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
     // DELETE FROM HERE !!!
 
-    public void print() {
+    public void printFromRoot() {
         Node<T> curr = rot;
         if (curr != null) {
             printNode(curr);
@@ -265,8 +266,8 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
     void printNode(Node node) {
         if (node != null) {
-            printNode(node.venstre);
             System.out.println(node);
+            printNode(node.venstre);
             printNode(node.høyre);
         }
     }
