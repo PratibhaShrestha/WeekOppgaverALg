@@ -14,7 +14,6 @@ public class Oblig3 {
         int[] a = {1, 8, 2, 4, 7, 5, 6, 6};
         for (int verdi : a) tre.leggInn(verdi);
 
-        tre.printFromRoot();
 
     }
 }

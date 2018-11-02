@@ -3,8 +3,6 @@ package no.oslomet.oblig3;
 
 ////////////////// ObligSBinTre /////////////////////////////////
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.tools.javac.util.GraphUtils;
 import no.oslomet.oblig3.hjelpeklasser.Beholder;
 
 import java.util.*;
@@ -32,10 +30,8 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         @Override
         public String toString() {
-
-            //return " " + verdi;
-
-
+            return " " + verdi;
+            /*
             // FOR DEMO PURPOSES
             T value = null, left = null, right = null, parent = null;
 
@@ -46,12 +42,13 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
             StringBuilder str = new StringBuilder();
 
-            str.append(String.format(" Node@%-8s [ %5d", Integer.toHexString(hashCode()), left));
-            str.append(String.format(" <--  Node@%-8s ^ %-4d %3d -->",
+            str.append(String.format(" Node@%-8s [ %5s", Integer.toHexString(hashCode()), left));
+            str.append(String.format(" <--  Node@%-8s ^ %-4s %3s -->",
                     (forelder != null) ? Integer.toHexString(forelder.hashCode()) : "", parent, value));
-            str.append(String.format(" %-5d ]", right));
+            str.append(String.format(" %-5s ]", right));
 
             return str.toString();
+            */
 
         }
     } // class Node
@@ -91,7 +88,8 @@ public class ObligSBinTre<T> implements Beholder<T> {
         else if (cmp < 0) q.venstre = p;         // venstre barn til q
         else q.høyre = p;                      // høyre barn til q
 
-        antall++;                                // en verdi mer i treet
+        antall++;                              // en verdi mer i treet
+        endringer++;
         return true;                             // vellykket innlegging
     }
 
@@ -156,6 +154,7 @@ public class ObligSBinTre<T> implements Beholder<T> {
         }
 
         antall--;   // det er nå én node mindre i treet
+        endringer--;
         return true;
     }
 
@@ -212,6 +211,7 @@ public class ObligSBinTre<T> implements Beholder<T> {
         }
 
         antall = 0;
+        endringer = 0;
         rot = null;
     }
 
@@ -247,7 +247,8 @@ public class ObligSBinTre<T> implements Beholder<T> {
         return parent;
     }
 
-    static Node lavesteVerdiInorden(Node node) {
+    /* HELPER METHODS */
+    private Node lavesteVerdiInorden(Node node) {
         Node current = node;
         if (current != null) {
             while (current.venstre != null) current = current.venstre;
@@ -255,38 +256,41 @@ public class ObligSBinTre<T> implements Beholder<T> {
         return current;
     }
 
-    // DELETE FROM HERE !!!
+    private String printLeaves(Node node, StringBuilder strOutput) {
+        if (node == null) return null;
 
-    public void printFromRoot() {
-        Node<T> curr = rot;
-        if (curr != null) {
-            printNode(curr);
+        if (node.venstre == null && node.høyre == null) {
+            strOutput.append(node.verdi + ", ");
+        } else {
+            printLeaves(node.venstre, strOutput);
+            printLeaves(node.høyre, strOutput);
         }
+        return strOutput.toString();
     }
 
-    void printNode(Node node) {
-        if (node != null) {
-            System.out.println(node);
-            printNode(node.venstre);
-            printNode(node.høyre);
+    // LEAVES VALUES USING THE ARRAYDEQUE ( WITHOUT RECURSION)
+    // NOT USED IN THIS OPPGAVE ..
+    public String leavesValue() {
+        Deque<Node> stack = new ArrayDeque<>();
+        Deque<Node> bladnodeStack = new ArrayDeque<>();
+        if (rot == null) return "[]";
+        else stack.addFirst(rot);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.removeFirst();
+            if (current.høyre != null) stack.addFirst(current.høyre);
+            if (current.venstre != null) stack.addFirst(current.venstre);
+            if (current.høyre == null && current.venstre == null) bladnodeStack.addLast(current);
         }
+
+        StringBuilder str = new StringBuilder();
+        str.append("[");
+        for (Node node : bladnodeStack) {
+            str.append(node.verdi + ", ");
+        }
+        str.delete(str.length() - 2, str.length());
+        return str.toString() + "]";
     }
-
-    void printTest() {
-        Node<T> curr = rot;
-
-        System.out.println(curr);
-
-        curr = lavesteVerdiInorden(rot);
-
-        System.out.println(curr);
-
-        curr = nesteInorden(curr);
-
-        System.out.println(curr);
-    }
-    // DELETE UPTO HERE !!!
-
 
     @Override
     public String toString() {
@@ -304,40 +308,6 @@ public class ObligSBinTre<T> implements Beholder<T> {
         strOutput.append("]");
 
         return strOutput.toString();
-
-        /*
-        // Inorder Traversal Using ArrayDeque
-        boolean isEmpty = true;
-        StringBuilder strOutput = new StringBuilder();
-        strOutput.append("[");
-
-        List<T> result = new ArrayList<>();
-        Deque<Node> stack = new ArrayDeque<>();
-        Node p = rot;
-
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.venstre;
-            } else {
-                Node node = stack.pop();
-                result.add((T) node.verdi);  // Add after all left children
-                p = node.høyre;
-            }
-        }
-
-        for (T value : result) {
-            strOutput.append(value).append(", ");
-            isEmpty = false;
-        }
-
-        if (!isEmpty)
-            strOutput.delete(strOutput.length() - 2, strOutput.length());
-
-        strOutput.append("]");
-
-        return strOutput.toString();
-         */
     }
 
     public String omvendtString() {
@@ -347,16 +317,18 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         List<T> result = new ArrayList<>();
         Deque<Node> stack = new ArrayDeque<>();
-        Node p = rot;
+        Node current = null;
+        if (rot == null) return "[]";
+        else current = rot;
 
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.høyre;
+        while (!stack.isEmpty() || current != null) {
+            if (current != null) {
+                stack.push(current);
+                current = current.høyre;
             } else {
                 Node node = stack.pop();
                 result.add((T) node.verdi);  // Add after all left children
-                p = node.venstre;
+                current = node.venstre;
             }
         }
 
@@ -374,23 +346,121 @@ public class ObligSBinTre<T> implements Beholder<T> {
     }
 
     public String høyreGren() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        Deque<Node> stack = new ArrayDeque<>();
+        StringBuilder str = new StringBuilder();
+        str.append("[");
+
+        if (rot == null) return "[]";
+        else str.append(rot.verdi + ", ");
+
+        if (rot.høyre != null)
+            stack.addFirst(rot.høyre);
+        else if (rot.venstre != null) { // if the høyre is null, take the left as right ! as question
+            stack.addFirst(rot.venstre);
+        }
+
+        while (!stack.isEmpty()) {
+            Node current = stack.removeFirst();
+            if (current.høyre != null) stack.addFirst(current.høyre);
+            str.append(current.verdi + ", ");
+            if (current.venstre != null) stack.addFirst(current.venstre);
+        }
+
+        str.delete(str.length() - 2, str.length());
+        return str.toString() + "]";
     }
 
     public String lengstGren() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        Deque<Node> stack = new ArrayDeque<>();
+        if (rot == null) return "[]";
+        stack.add(rot);
+        Node lastNode = rot;
+        while (!stack.isEmpty()) {
+            lastNode = stack.removeFirst();
+            if (lastNode.høyre != null) stack.addLast(lastNode.høyre);
+            if (lastNode.venstre != null) stack.addLast(lastNode.venstre);
+        }
+
+        //Now we have the lastNode... so traverse back
+        StringBuilder str = new StringBuilder();
+        str.append("[" + rot.verdi + ", ");
+        while (lastNode != rot) {
+            str.insert(4, lastNode.verdi + ", ");
+            lastNode = lastNode.forelder;
+        }
+        str.delete(str.length() - 2, str.length());
+        return str.toString() + "]";
+    }
+
+    private List<String> printAllRootToLeafPaths(Node node, StringBuilder path, List sw) {
+        if (node == null) return null;
+        path.append(String.valueOf(node.verdi) + ":");
+        if (node.venstre == null && node.høyre == null) {
+            sw.add(path.toString());
+        } else {
+            printAllRootToLeafPaths(node.venstre, new StringBuilder(path.toString()), sw);
+            printAllRootToLeafPaths(node.høyre, new StringBuilder(path.toString()), sw);
+        }
+        return sw;
     }
 
     public String[] grener() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        List<String> sw = new ArrayList<>();
+        StringBuilder path = new StringBuilder();
+        List<String> allPaths = printAllRootToLeafPaths(rot, path, sw);
+        String[] array = new String[0];
+        if (allPaths != null) {
+            array = allPaths.toArray(new String[0]);
+            for (int i = 0; i < array.length; i++) {
+                array[i] = "[" + array[i].replaceAll(":", ", ");
+                // removing the last ,
+                array[i] = array[i].substring(0, array[i].length() - 2) + "]";
+            }
+        }
+        return array;
     }
 
     public String bladnodeverdier() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        String strOutput = "[";
+        String strLeaves = printLeaves(rot, new StringBuilder());
+        if (strLeaves != null) {
+            strOutput += strLeaves.substring(0, strLeaves.length() - 2);
+        }
+        strOutput += "]";
+        return strOutput;
     }
 
     public String postString() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Stack<Node> stack = new Stack<>();
+        List<T> list = new ArrayList<>();
+        if (rot == null) return "[]";
+        stack.push(rot);
+        Node prev = null;
+        while (!stack.isEmpty()) {
+            Node current = stack.peek();
+            if (prev == null || prev.venstre == current ||
+                    prev.høyre == current) {
+                if (current.venstre != null) stack.push(current.venstre);
+                else if (current.høyre != null) stack.push(current.høyre);
+                else {
+                    stack.pop();
+                    list.add((T) current.verdi);
+                }
+            } else if (current.venstre == prev) {
+                if (current.høyre != null) stack.push(current.høyre);
+                else {
+                    stack.pop();
+                    list.add((T) current.verdi);
+                }
+            } else if (current.høyre == prev) {
+                stack.pop();
+                list.add((T) current.verdi);
+            }
+            prev = current;
+        }
+        return String.valueOf(list);
     }
 
     @Override
@@ -405,7 +475,10 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         private BladnodeIterator() // konstruktør
         {
-            throw new UnsupportedOperationException("Ikke kodet ennå!");
+            if (rot != null) {
+                p = lavesteVerdiInorden(rot);
+                iteratorendringer = endringer;
+            }
         }
 
         @Override
@@ -415,12 +488,51 @@ public class ObligSBinTre<T> implements Beholder<T> {
 
         @Override
         public T next() {
-            throw new UnsupportedOperationException("Ikke kodet ennå!");
+            if (iteratorendringer != endringer)
+                throw new ConcurrentModificationException("ulik endringer verdier");
+            if (!hasNext())
+                throw new NoSuchElementException("Det ikke er flere bladnoder igjen.");
+
+            while (p != null) {
+                if (p.venstre == null && p.høyre == null) {
+                    q = p;
+                    p = nesteInorden(p);
+                    break;
+                } else
+                    p = nesteInorden(p);
+            }
+            removeOK = true;
+            return q.verdi;
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Ikke kodet ennå!");
+            if (iteratorendringer != endringer)
+                throw new ConcurrentModificationException("ulik endringer verdier");
+            if (!removeOK) throw new IllegalStateException();
+            if (q == rot) { // if this is the root, then everything is null !
+                rot = p = q = null;
+                removeOK = false;
+                antall--;
+                endringer++;
+                iteratorendringer++;
+                return;
+            }
+
+            // else , set the respective node to be null !
+            if (q.forelder.høyre == q) q.forelder.høyre = null;
+            else q.forelder.venstre = null;
+
+            if (p != null && nesteInorden(p) == null) {
+                while (p != null) {
+                    if (p.venstre != null) p = p.venstre;
+                    else p = p.høyre;
+                }
+            }
+            removeOK = false;
+            antall--;
+            endringer++;
+            iteratorendringer++;
         }
     } // BladnodeIterator
 } // ObligSBinTre
